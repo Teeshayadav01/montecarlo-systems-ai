@@ -32,6 +32,21 @@ MonteCarlo Systems provides that infrastructure.
 
 ---
 
+## 👩‍💻 My Role and Contribution
+
+This project was developed as part of a group hackathon.
+
+**Original Repository:**  
+https://github.com/SHIVAIN-MITTAL16/montecarlo_systems_hackathon_project
+
+**My Contributions:**
+- Developed and improved Streamlit dashboard UI
+- Integrated simulation outputs with frontend
+- Performed testing, debugging, and enhancements
+
+
+---
+
 ## 🎯 What This Does
 
 Three engines. One integrated pipeline.
@@ -133,6 +148,13 @@ streamlit run app.py
 ```
 
 Opens at → `http://localhost:8501`
+
+## ⚠️ Note
+
+Data and AI models are generated dynamically using `setup.py`.  
+Large datasets and trained model files are not included in this repository to keep it lightweight.
+
+---
 
 ### What setup.py generates:
 ```
