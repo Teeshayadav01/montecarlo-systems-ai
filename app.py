@@ -147,7 +147,7 @@ if not os.path.exists("data/clean_data.csv"):
     d["crisis"]    = pd.read_csv("data/crisis_data.csv",  parse_dates=["datetime"])
     with open("data/metrics.json") as f:
         d["metrics"] = json.load(f)
-    return 
+    #return 
 
 try:
     D = load_data()
