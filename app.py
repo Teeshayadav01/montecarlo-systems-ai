@@ -3,7 +3,12 @@ app.py — MonteCarlo Systems
 Renewable Energy Decision Engine
 Run: streamlit run app.py
 """
+import os
 
+if os.path.exists("data/clean_data.csv"):
+    pass
+else:
+    print("Skipping setup on cloud")
 import streamlit as st
 import pandas as pd
 import numpy as np
