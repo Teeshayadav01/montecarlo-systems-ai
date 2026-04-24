@@ -151,7 +151,7 @@ if os.path.exists("data/clean_data.csv"):
 else:
     import pandas as pd
     d["clean"] = pd.DataFrame({
-        "datetime": pd.date_range(start="2024-01-01", periods=50, freq="H"),
+        "datetime": pd.date_range(start="2024-01-01", periods=50, freq="h"),
         "demand_mw": [50000 + i*10 for i in range(50)]
     })
     d["scenarios"] = pd.read_csv("data/scenarios.csv")
