@@ -133,7 +133,12 @@ def load_data():
     if any(not os.path.exists(p) for p in needed):
         with st.spinner("First run — generating all data (~30 s)…"):
             import subprocess
-            subprocess.run([sys.executable, "setup.py"], check=True)
+            import os
+import streamlit as st
+
+if not os.path.exists("data/clean_data.csv"):
+    st.warning("⚠ Demo mode: Data not loaded. Some features may be limited.")
+            #subprocess.run([sys.executable, "setup.py"], check=True)
     d = {}
     d["clean"]     = pd.read_csv("data/clean_data.csv",   parse_dates=["datetime"])
     d["scenarios"] = pd.read_csv("data/scenarios.csv")
@@ -147,7 +152,7 @@ def load_data():
 try:
     D = load_data()
 except Exception as e:
-    st.error(f"⚠ Data error: {e}\n\nRun `python setup.py` first.")
+    st.warning("⚠ Running in cloud demo mode. Full data setup is disabled.")
     st.stop()
 
 M = D["metrics"]
