@@ -15,6 +15,10 @@ import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import json, os, sys, time
+import streamlit as st
+
+if not os.path.exists("data/clean_data.csv"):
+    st.warning("⚠ Running in demo mode (limited data)")
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -140,7 +144,16 @@ if not os.path.exists("data/clean_data.csv"):
     st.warning("⚠ Demo mode: Data not loaded. Some features may be limited.")
             #subprocess.run([sys.executable, "setup.py"], check=True)
     d = {}
-    d["clean"]     = pd.read_csv("data/clean_data.csv",   parse_dates=["datetime"])
+    import os
+
+if os.path.exists("data/clean_data.csv"):
+    d["clean"] = pd.read_csv("data/clean_data.csv", parse_dates=["datetime"])
+else:
+    import pandas as pd
+    d["clean"] = pd.DataFrame({
+        "datetime": pd.date_range(start="2024-01-01", periods=50, freq="H"),
+        "demand_mw": [50000 + i*10 for i in range(50)]
+    })
     d["scenarios"] = pd.read_csv("data/scenarios.csv")
     d["baseline"]  = pd.read_csv("data/baseline_results.csv")
     d["optimal"]   = pd.read_csv("data/optimal_results.csv")
